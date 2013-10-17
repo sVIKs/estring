@@ -212,7 +212,7 @@ r13(C) -> C.
 -spec similarity(string(), string()) -> float().
 similarity(Source, Source) -> 1.0;
 similarity(Source, Target) ->
-    Score = (length(Target) - edit_distance(Source, Target)) / length(Target),
+    Score = (length(Target) - edit_distance(Source, Target)) / lists:max([length(Source),length(Target)]),
     case Score > 0 of
         true -> Score;
         false -> 0.0
